@@ -27,9 +27,17 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
+          cache-dependency-path: 'package-lock.json'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
+
+      - name: Verify installation
+        run: |
+          npm -v
+          node -v
+          ls -la node_modules/.bin || true
+          [ -f node_modules/.bin/next ] && echo "Next.js CLI found" || (echo "Next.js CLI missing" && exit 1)
 
       - name: Build static site
         run: npm run build
