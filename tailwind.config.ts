@@ -8,6 +8,18 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: [
+          "system-ui",
+          "-apple-system",
+          "Segoe UI",
+          "Roboto",
+          "Ubuntu",
+          "Cantarell",
+          "Noto Sans",
+          "sans-serif",
+        ],
+      },
       colors: {
         brand: {
           50: "#eff6ff",

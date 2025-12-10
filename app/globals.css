@@ -13,6 +13,7 @@ body {
 
 body {
   background-color: rgb(var(--bg));
+  font-family: theme('fontFamily.sans');
 }
 
 .container {

@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+// Using system font stack to avoid external Google Fonts fetch in build
 
 export const metadata: Metadata = {
   title: "Indústria Farmacêutica - Perfusão IV",
@@ -19,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt">
-      <body className={inter.className + " min-h-screen flex flex-col"}>
+      <body className={"min-h-screen flex flex-col font-sans"}>
         <Nav />
         <main className="flex-1 container py-8">{children}</main>
         <Footer />
