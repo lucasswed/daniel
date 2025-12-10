@@ -29,13 +29,20 @@ jobs:
           cache: 'npm'
           cache-dependency-path: 'package-lock.json'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install dependencies (ci)
+        run: |
+          npm ci --no-audit --no-fund
+      - name: Fallback install (retry once)
+        if: failure()
+        run: |
+          echo "npm ci failed, retrying with npm install"
+          npm install --no-audit --no-fund
 
       - name: Verify installation
         run: |
           npm -v
           node -v
+          test -d node_modules && echo "node_modules present" || (echo "node_modules missing" && exit 1)
           ls -la node_modules/.bin || true
           [ -f node_modules/.bin/next ] && echo "Next.js CLI found" || (echo "Next.js CLI missing" && exit 1)
 
