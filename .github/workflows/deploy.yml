@@ -29,6 +29,11 @@ jobs:
           cache: 'npm'
           cache-dependency-path: 'package-lock.json'
 
+      - name: Preinstall Next CLI (safeguard)
+        run: |
+          npm install next@14.2.15 --no-save --no-audit --no-fund
+          npx --yes next@14.2.15 --version
+
       - name: Install dependencies (ci)
         run: |
           npm ci --no-audit --no-fund
