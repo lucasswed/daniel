@@ -1,12 +1,17 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production'
+
 const nextConfig = {
   reactStrictMode: true,
-  // Generate a static export in the out/ folder
+  // Static export for GitHub Pages
   output: 'export',
-  // Set basePath for GitHub Pages under /daniel
-  basePath: '/daniel',
-  // Ensure static HTML paths end with a slash for GitHub Pages
-  trailingSlash: true,
+  // Set basePath and assetPrefix for repo-based GitHub Pages
+  basePath: isProd ? '/daniel' : '',
+  assetPrefix: isProd ? '/daniel/' : '',
+  images: {
+    // Disable image optimization for static export
+    unoptimized: true,
+  },
 };
 
 module.exports = nextConfig;

@@ -3,8 +3,6 @@ import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 import "./globals.css";
 
-// Using system font stack to avoid external Google Fonts fetch in build
-
 export const metadata: Metadata = {
   title: "Indústria Farmacêutica - Perfusão IV",
   description:
@@ -18,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt">
-      <body className={"min-h-screen flex flex-col font-sans"}>
+      <body className={"min-h-screen flex flex-col"}>
         <Nav />
         <main className="flex-1 container py-8">{children}</main>
         <Footer />
