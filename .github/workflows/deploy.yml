@@ -26,10 +26,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+          # Avoid cache confusion when there is no lockfile
+          cache: 'none'
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --no-audit --no-fund
+
+      - name: Verify Next.js is installed
+        run: |
+          npx --yes next --version
+          ls -la node_modules/.bin || true
 
       - name: Build
         env:
